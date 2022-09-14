@@ -24,7 +24,6 @@ const loginUser = async (req, res) => {
       .status(response.code)
       .send({ message: response.message, token: response.token });
   } catch (err) {
-    console.log(err);
     res.status(500).send({ message: 'Internal Error' });
   }
 };
