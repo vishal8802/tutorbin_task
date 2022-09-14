@@ -6,10 +6,11 @@ const TasksSchema = new Schema(
   {
     userId: { type: ObjectId, required: true },
     title: { type: String },
-    description: { type: String },
     isDeleted: { type: Boolean },
   },
   { timestamps: true },
 );
+TasksSchema.index({ userId: 1 });
+TasksSchema.index({ _id: 1, userId: 1 });
 
 module.exports = model('tasks', TasksSchema);
