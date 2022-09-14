@@ -3,7 +3,6 @@ const { SECRET_KEY } = process.env;
 
 const createJWT = ({ data }) => {
   const token = jwt.sign(data, SECRET_KEY, {
-    algorithm: 'RS256',
     expiresIn: '12h',
   });
   return token;
