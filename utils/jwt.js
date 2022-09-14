@@ -13,13 +13,12 @@ const authenticate = (req, res, next) => {
     const { headers } = req;
     const token = headers.authorization;
 
-    if (!token)
-      return res.status(400).send({ message: 'Authorization not provided' });
+    if (!token) return res.status(400).send({ message: 'Unauthorized' });
     const decoded = jwt.verify(token, SECRET_KEY);
     req.user = decoded;
     next();
   } catch (err) {
-    res.status(401).send({ message: 'Unauthorized' });
+    res.status(401).send({ message: 'Invalid Token' });
   }
 };
 
